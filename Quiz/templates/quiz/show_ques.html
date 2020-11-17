@@ -1,0 +1,92 @@
+{% extends 'quiz/base.html' %}
+{% block title %}Question{% endblock %}
+{% block nav %}
+    <script type="text/javascript">
+        function timeout()
+        {
+            var hours=Math.floor(timeleft/3600);
+            var minute=Math.floor((timeleft-(hours*3600))/60);
+            var second=timeleft%60;
+            var hr=checktime(hours);
+            var mint=checktime(minute);
+            var sec=checktime(second);
+            if(timeleft<=0)
+            {
+                clearTimeout(tm);
+                document.getElementById("form1").submit();
+            }
+            else
+            {
+                document.getElementById("time").innerHTML="Time left: "+hr+":"+mint+":"+sec;
+            }
+            timeleft--;
+            var tm=setTimeout(function(){timeout()},1000);
+        }
+
+        function checktime(msg)
+        {
+            if(msg<10)
+            {
+                msg="0"+msg;
+            }
+            return msg;
+        }
+    </script>
+
+<body onload="timeout()">
+
+    <div class="container">
+        <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+
+                <div style="margin-top:10px" class="panel panel-primary">
+                    <div style="text-align:center;font-size:25px;font-family:arial black"class="panel-heading">Online Exam</div>
+                </div>
+                <script>
+                var timeleft=2*60*60;
+                </script>
+
+                <div id="time" style="float:right;font-size:20px">Timeout</div>
+                {% for q in ques %}
+                <form action="" method="post" id="form1">
+                    {% csrf_token %}
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="alert alert-success">{{ q.ques }}&nbsp;</th>
+                            </tr>
+                        </thead>
+                        <tbody class="alert alert-info">
+                                <tr>
+                                    <td><label>&nbsp;1&emsp;<input type="radio" value="{{ q.ans1}}" name="{{ q.id }}"/>{{ q.ans1 }}&nbsp;</label></td>
+                                </tr>
+
+                                <tr>
+                                    <td><label>&nbsp;2&emsp;<input type="radio" value="{{ q.ans2 }}" name="{{ q.id }}"/>{{ q.ans2 }}&nbsp;</label></td>
+                                </tr>
+
+                                <tr>
+                                    <td><label>&nbsp;3&emsp;<input type="radio" value="{{ q.ans3 }}" name="{{ q.id }}"/>{{ q.ans3 }}&nbsp;</label></td>
+                                </tr>
+
+                                <tr>
+                                    <td><label>&nbsp;4&emsp;<input type="radio" value="{{ q.ans4 }}" name="{{ q.id }}"/>{{ q.ans4}}&nbsp;</label></td>
+                                </tr>
+
+                                <tr style="display:none">
+                                    <td><input type="radio" checked="checked" style="display:none;" value="no_attempt" name="{{ q.id }}"/></td>
+                                </tr>
+                        </tbody>
+                    </table>
+                {% endfor %}
+                    <center><input type="submit" value="Submit Exam" class="btn btn-success"/></center>
+                </form>
+
+
+
+            </div>
+            <div class="col-sm-2"></div>
+    </div>
+
+</body>
+{% endblock %}

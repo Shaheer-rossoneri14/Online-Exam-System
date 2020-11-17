@@ -1,0 +1,54 @@
+{% extends 'quiz/base.html' %}
+{% block title %}Answer{% endblock %}
+{% block nav %}
+<body>
+<center>
+    <div class="container">
+    <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            <div style="margin-top:10px" class="panel panel-primary">
+                <div style="text-align:center;font-size:25px;font-family:arial black"class="panel-heading">Result Sheet</div>
+            </div>
+            <table class="table table-bordered">
+                <thead >
+                    <tr style="background:#ccd7ff;color:#4d73ff">
+                        <th >Total number of Question</th>
+                        <th >{{ ans.4 }}</th>
+                    </tr>
+                </thead>
+                <tbody >
+                    <tr class="alert alert-info">
+                        <td><strong>Attempted Question</strong></td>
+                        <td><strong>{{ ans.3 }}</strong></td>
+                    </tr>
+                    <tr class="alert alert-success">
+                        <td><strong>Right Answer</strong></td>
+                        <td><strong>{{ ans.0 }}</strong></td>
+                    </tr>
+                    <tr class="alert alert-danger">
+                        <td><strong>Wrong Answer</strong></td>
+                        <td><strong>{{ ans.1 }}</strong></td>
+                    </tr>
+                    <tr class="alert alert-warning">
+                        <td><strong>No Answer</strong></td>
+                        <td><strong>{{ ans.2 }}</strong></td>
+                    </tr>
+                    <tr style="background:#666666;color:#bfff00">
+                        <td ><strong>Your Result</strong></td>
+                        <td ><strong>{{ ans.5 }}%</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2 style='color: rgb(91, 206, 25)'>Thank You for attempting the Exam!</h2> 
+        <h3 style='color: rgb(0, 0, 0)'>Rank Card will be released soon!</h3>
+        <br>
+        <h3 style='color: rgb(0, 0, 0)'>You can close the tab now</h3>
+
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+</center>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+{% endblock %}
