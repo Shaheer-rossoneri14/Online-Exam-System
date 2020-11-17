@@ -82,7 +82,7 @@ def question(request, subject_id):
             else:
                 w+=1
         at=t-n
-        result = int((r*100)/t)
+        result = int((r*3)-(w*1))
         ans = [r, w, n, at, t, result]
 
         return render(request,'quiz/answer.html', {'ans': ans})

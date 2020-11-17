@@ -1,39 +1,35 @@
 {% extends 'quiz/base.html' %}
 {% block title %}Signup{% endblock %}
 {% block nav %}
-<body>
-	
-	
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-4">
-				<div class="panel panel-primary">
-					<div class="panel-heading">Welcome to Online Exam System</div>
-				</div>
-			</div>
-		</div>
-	</div>
 
-	
-	<div class="container">
-		<div class="row">
+<body>
+	<center>
+		<div class="container">
+		<div class="col-sm-4"></div>
 			<div class="col-sm-4">
-				<div class="panel panel-primary">
-					<div class="panel panel-heading">Signup Form</div>
-					<div class="panel-body">
+				<div style="margin-top:10px" class="panel panel-primary">
+					<div style="text-align:center;font-size:25px;font-family:arial black"class="panel-heading">Welcome To Online Exam System</div>
+				</div>
+				<div style="margin-top:10px" class="panel panel-info">
+					<div style="text-align:center;font-size:25px;font-family:arial black"class="panel-heading">Signup Form</div>
+				</div>
+
+
+		
 
 						<form method="post" action="" enctype="multipart/form-data">
                             {% csrf_token%}
                              {{ form.as_p }}
-							<button type="submit"  class="btn btn-default">Submit</button>
-                        <a href="{% url 'home:login' %}">Login</a>
+							<button type="submit"  class="btn btn-info">Submit</button>
+							<a href="{% url 'home:login' %}" class="btn btn-info" role="button">Login</a>
+                        
 						</form>
 
 					</div>
+					</div>
 				</div>
 			</div>
-		</div>
-	</div>
-
+			</div>
+		</center>
 </body>
 {% endblock%}

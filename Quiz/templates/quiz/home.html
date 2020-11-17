@@ -4,21 +4,22 @@
 
 <div class="container">
 	<div style="margin-top:10px" class="panel panel-primary">
-		<div style="text-align:center;font-size:25px;font-family:arial black"class="panel-heading">Dashboard:</div>
+		<div style="text-align:left;font-size:25px;font-family:arial black"class="panel-heading">User Dashboard</div>
 	</div>
   <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
     <li><a data-toggle="tab" href="#Profile">Profile</a></li>
-    <li><a data-toggle="tab" href="#YourQuiz">Your Quiz</a></li>
+    <li><a data-toggle="tab" href="#Instructions">Instructions</a></li>
+    <li><a data-toggle="tab" href="#YourQuiz">Your Exam</a></li>
     <li><a data-toggle="tab" href="#ContactUs">Contact Us</a></li>
 
     <li style="float:right"><a href="{% url 'home:log' %}">Logout</a></li>
   </ul>
 
 
-    <div class="tab-content">
+  <div class="tab-content">
 
-      <div id="Home" class="tab-pane fade in active">
+      <div id="Home" class="tab-pane fade">
          <h2>Welcome to OES!</h2>
          <h3>About the Application:</h3>
          <p>This is an online examination system application built using Django, HTML, CSS and JavaScript.</p>
@@ -36,9 +37,32 @@
            <h3>About us:</h3>
            <p>405:Found is a team of 3 ISE undergrads at CMRIT, Bangalore.</p>
            <br>                          
-       </div>
+      </div>
+  
+      <div id="Instructions" class="tab-pane fade">
+        <h2>Instructions</h2>
+        <h3>A. General Instructions:</h3>
+        <ol>
+          <li>The examination will comprise of Objective type Multiple Choice Questions (MCQs)</li>
+          <li>All questions are compulsory.</li>
+          <li>There are no choices in questions.</li>
+          <li>The exam will be of 2 hours.</li>
+          <li>For every correct answer you will get 3 marks.</li>
+          <li>For every wrong answer 1 marks will be deducted.</li>
+        </ol>
+        <br>
+        <h3>B. Information & Instructions:</h3>
+        <ol>
+          <li>Every student will take the examination on a Laptop/Desktop/Smart Phone.</li>
+          <li>Students are requested to close all the tabs and windows before starting the test.</li>
+          <li>The students just need to click on the Right Choice / Correct option from the
+            multiple choices /options given with each question. For Multiple Choice Questions,
+            each question has four options, and the candidate has to click the appropriate
+            option.</li>  
+        </ol>                           
+      </div>
    
-       <div id="ContactUs" class="tab-pane fade">
+      <div id="ContactUs" class="tab-pane fade">
          <h2>Contact Us</h2>
          <div class="contact-agileinfo">
            <div class="col-md-7 contact-form wthree">
@@ -51,19 +75,19 @@
                <br>
                <input type="submit" value="SUBMIT">
              </form>
-           </div>
-           <div class="col-md-4 contact-right wthree">
+          </div>
+          <div class="col-md-4 contact-right wthree">
              <div class="contact-text w3-agileits">
                <h4>GET IN TOUCH:</h4>
                <p><i class="fa fa-map-marker"></i> Bangalore, India</p>
                <p><i class="fa fa-phone"></i> Telephone : +91 xxx xxx xxxx </p>
                <p><i class="fa fa-envelope-o"></i> Email : <a href="mailto:example@mail.com">found405@gmail.com</a></p> 
              </div> 
-           </div> 
-   
-         </div>
-       </div>
-     <div id="Profile" class="tab-pane fade">
+          </div> 
+        </div>
+      </div>
+
+      <div id="Profile" class="tab-pane fade">
          <h2>{{ user.username }}</h2>
        <table class="table">
          <thead>
@@ -85,10 +109,9 @@
                    </tr>
                </tbody>
        </table>
-       </div>
-   
-   
-    <div id="YourQuiz" class="tab-pane fade">
+      </div>
+
+      <div id="YourQuiz" class="tab-pane fade">
       <center><h4 style="color:#286090">Time: 2 Hour</h4></center>
         <div class="form-group cl-md-4">
             {% if messages %}
@@ -120,7 +143,7 @@
 				</div>
 			</div>
 		<div class="col-sm-4"></div>
-	</div>
+	    </div>
   </div>
 </div>
 
